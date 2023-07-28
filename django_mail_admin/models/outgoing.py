@@ -6,7 +6,6 @@ from django.db import models
 from django.template import Template, Context
 from django.utils.encoding import force_str
 from django.utils.translation import gettext_lazy as _
-from jsonfield import JSONField
 
 from django_mail_admin.connections import connections
 from django_mail_admin.fields import CommaSeparatedEmailField
@@ -65,7 +64,7 @@ class OutgoingEmail(models.Model):
     last_updated = models.DateTimeField(db_index=True, auto_now=True)
     scheduled_time = models.DateTimeField(_('The scheduled sending time'),
                                           blank=True, null=True, db_index=True)
-    headers = JSONField(_('Headers'), blank=True, null=True)
+    headers = models.JSONField(_('Headers'), blank=True, null=True)
 
     status = models.PositiveSmallIntegerField(
         _("Status"),

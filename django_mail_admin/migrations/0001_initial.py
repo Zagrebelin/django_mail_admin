@@ -8,7 +8,6 @@ import django_mail_admin.fields
 import django_mail_admin.settings
 import django_mail_admin.utils
 import django_mail_admin.validators
-import jsonfield.fields
 
 
 class Migration(migrations.Migration):
@@ -141,7 +140,7 @@ class Migration(migrations.Migration):
                 ('created', models.DateTimeField(auto_now_add=True, db_index=True)),
                 ('last_updated', models.DateTimeField(auto_now=True, db_index=True)),
                 ('scheduled_time', models.DateTimeField(blank=True, db_index=True, null=True, verbose_name='The scheduled sending time')),
-                ('headers', jsonfield.fields.JSONField(blank=True, null=True, verbose_name='Headers')),
+                ('headers', models.JSONField(blank=True, null=True, verbose_name='Headers')),
                 ('status', models.PositiveSmallIntegerField(blank=True, choices=[(0, 'sent'), (1, 'failed'), (2, 'queued')], db_index=True, null=True, verbose_name='Status')),
                 ('priority', models.PositiveSmallIntegerField(blank=True, choices=[(0, 'low'), (1, 'medium'), (2, 'high'), (3, 'now')], null=True, verbose_name='Priority')),
                 ('send_now', models.BooleanField(default=False, verbose_name='Send now')),

@@ -118,7 +118,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
-INSTALLED_APPS += (
-    'django_admin_row_actions',
-)
+try:
+    import django_admin_row_actions
+    INSTALLED_APPS += (
+        'django_admin_row_actions',
+    )
+except ImportError:
+    pass
+
 EMAIL_BACKEND = 'django_mail_admin.backends.CustomEmailBackend'
